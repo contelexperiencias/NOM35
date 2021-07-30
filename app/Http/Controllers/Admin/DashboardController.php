@@ -22,11 +22,11 @@ class DashboardController extends Controller
         // $anios = Carbon::createFromFormat('Y-m-d H:i:s', $getanios[1]->created_at)->year;
         return view("admin.dashboard.index",compact('count','total_cuestionario','promedio','companias')); 
     }
-    public function edit($compania, $anio)
+    public function edit($compania)
     {
         if($compania == 0){
             $total_cuestionario = answer::join('users_total', 'answers.user_id', '=', 'users_total.user_id')
-            ->whereYear('answers.created_at', '=',$anio )
+            ->whereYear('answers.created_at', '=',2020 )
             ->groupBy('answers.user_id','users_total.total')       
             ->get(['answers.user_id','users_total.total']);
             $count = $total_cuestionario->count();
@@ -39,7 +39,7 @@ class DashboardController extends Controller
         ->get(['answers.user_id','users_total.total']);
         $count = $total_cuestionario->count();
         $promedio =$total_cuestionario->avg('total');
-        return view("admin.dashboard.index",compact('count','total_cuestionario','promedio','companias')); 
+        return view("admin.dashboard.edit",compact('count','total_cuestionario','promedio')); 
 
     }
 }

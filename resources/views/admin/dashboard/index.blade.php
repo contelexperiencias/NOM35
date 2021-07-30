@@ -20,7 +20,7 @@
             </div> 
             <div class="col-sm-6">
             <label for="browser">Año:</label>
-            <select id="selectCategory">         
+            <select id="selectAnio">         
           
                 <option value="{{ now()->year }}">{{ now()->year }}</option>   
                 <option value="{{ now()->year -1 }}">{{ now()->year -1 }}</option>  
@@ -28,7 +28,7 @@
                 <option value="{{ now()->year -3 }}">{{ now()->year -3 }}</option>  
           
             </select> 
-            <a href="{{ route('cuestionario.edit',$item->id)}}" class="btn btn-primary">Consultar</a>
+            <a href="{{ route('dashboard.edit','0')}}" class="btn btn-primary">Consultar</a>
             </div> 
             </div>           
             </li>
